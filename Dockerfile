@@ -29,15 +29,15 @@ RUN apt update && \
 
 # Install ruby
 ENV RUBY_VER="2.6.7"
-ENV CPPFLAGS="-I/opt/jemalloc/include"
-ENV LDFLAGS="-L/opt/jemalloc/lib/"
-RUN apt update && \
-	apt -y install build-essential && \
-	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
-	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
-	cd ~ && \
-	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -
-ENV PATH="${PATH}:/root/.rbenv/bin"
+# ENV CPPFLAGS="-I/opt/jemalloc/include"
+# ENV LDFLAGS="-L/opt/jemalloc/lib/"
+# RUN apt update && \
+# 	apt -y install build-essential && \
+# 	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
+# 	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
+# 	cd ~ && \
+# 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -
+# ENV PATH="${PATH}:/root/.rbenv/bin"
 # Installing rvm 
 RUN apt install -qy procps curl ca-certificates gnupg2 --no-install-recommends
 
