@@ -9,13 +9,11 @@ RUN	echo "Etc/UTC" > /etc/localtime && \
 	apt update && \
 	apt -y dist-upgrade && \
 	apt -y install wget make gcc g++ python && \
+	apt install -y git-core curl build-essential openssl libssl-dev && \
+	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && \
+	apt -y install nodejs && \
+	node -v && \
 	cd ~ && \
-	wget https://nodejs.org/download/release/v$NODE_VER/node-v$NODE_VER.tar.gz && \
-	tar xf node-v$NODE_VER.tar.gz && \
-	cd node-v$NODE_VER && \
-	./configure --prefix=/opt/node && \
-	make -j$(nproc) > /dev/null && \
-	make install
 
 # Install jemalloc
 ENV JE_VER="5.1.0"
