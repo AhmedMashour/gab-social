@@ -10,7 +10,7 @@ RUN	echo "Etc/UTC" > /etc/localtime && \
 	apt -y dist-upgrade && \
 	apt -y install wget make gcc g++ python && \
 	apt install -y git-core curl build-essential openssl libssl-dev && \
-	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && \
+	curl -sL https://deb.nodesource.com/setup_10.x | -E bash - && \
 	apt -y install nodejs && \
 	node -v && \
 	cd ~ && \
