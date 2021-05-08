@@ -43,9 +43,10 @@ RUN apt install -y -qy procps curl ca-certificates gnupg2 --no-install-recommend
 
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s
-RUN /bin/bash -l -c ". /etc/profile.d/rvm.sh && rvm install 2.6.7"
 RUN usermod -a -G rvm root
 RUN echo '[[ -s /usr/local/rvm/scripts/rvm ]] && source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
+RUN /bin/bash -l -c "rvm install 2.6.7"
+
 # # Continue Ruby Installation
 # Run	cd ~ && \
 # 	echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
