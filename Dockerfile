@@ -32,7 +32,7 @@ ENV RUBY_VER="2.6.1"
 ENV CPPFLAGS="-I/opt/jemalloc/include"
 ENV LDFLAGS="-L/opt/jemalloc/lib/"
 RUN apt update && \
-	apt -y install build-essential && \
+	apt -y install build-essential apt-utils  && \
 	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
 	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
 	cd ~ && \
