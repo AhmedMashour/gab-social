@@ -36,8 +36,7 @@ RUN apt update && \
 	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
 	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
 	cd ~ && \
-	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash - && \
-
+	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -
 ENV PATH="${PATH}:/root/.rbenv/bin"
 
 # Continue Ruby Installation
