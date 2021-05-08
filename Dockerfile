@@ -41,7 +41,6 @@ ENV PATH="${PATH}:$(pwd)/.rbenv/bin"
 
 # Continue Ruby Installation
 Run echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
-    pwd && \
 	echo $PATH && \
 	source ~/.bashrc && \
 	rbenv install $RUBY_VER && \
