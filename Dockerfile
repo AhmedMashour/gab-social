@@ -36,17 +36,19 @@ RUN apt update && \
 	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
 	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
 	cd ~ && \
-	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -
-ENV PATH="${PATH}:$PWD/.rbenv/bin"
-
-# Continue Ruby Installation
-Run echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
- 	echo "$PWD" && \
+	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash - && \
+	echo "$PWD" && \
 	echo $PATH && \
 	cd .rbenv && \
 	cd bin && \
 	rbenv install $RUBY_VER && \
 	ruby -v
+	
+ENV PATH="${PATH}:$PWD/.rbenv/bin"
+
+# Continue Ruby Installation
+Run echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
+ 	
 
 # Install package dependency managers
 RUN npm install -g yarn && \
