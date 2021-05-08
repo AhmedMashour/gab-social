@@ -45,9 +45,10 @@ RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s
 RUN usermod -a -G rvm root
 RUN echo '[[ -s /usr/local/rvm/scripts/rvm ]] && source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
-RUN /bin/bash -l -c PATH=$PATH:/usr/local/rvm/bin
-RUN rvm install 2.6.7
-RUN rvm --default use 2.6.7
+RUN /bin/bash -l -c "rvm install 2.6.7"
+RUN /bin/bash -l -c "rvm --default use 2.6.7"
+RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+
 # # Continue Ruby Installation
 # Run	cd ~ && \
 # 	echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
@@ -60,7 +61,6 @@ RUN rvm --default use 2.6.7
 RUN	cd ~ && \
 	ruby -v && \
 	npm install -g yarn && \
-	gem install bundler && \
 	apt update && \
 	apt -y install git libicu-dev libidn11-dev \
 	libpq-dev libprotobuf-dev protobuf-compiler
