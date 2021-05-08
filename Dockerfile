@@ -67,8 +67,7 @@ RUN	cd ~ && \
 COPY Gemfile* package.json yarn.lock /opt/gabsocial/
 
 # Install application dependencies
-RUN cd /opt/gabsocial && \
-	bundle install -j$(nproc) --deployment --without development test && \
+RUN /bin/bash -l -c "cd /opt/gabsocial && bundle install -j$(nproc) --deployment --without development test" && \
 	yarn install --pure-lockfile
 
 FROM ubuntu:18.04
