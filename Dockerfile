@@ -13,8 +13,7 @@ RUN	echo "Etc/UTC" > /etc/localtime && \
 	curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 	apt -y install nodejs && \
 	node -v && \
-	cd ~ && \
-
+	cd ~
 # Install jemalloc
 ENV JE_VER="5.1.0"
 RUN apt update && \
