@@ -39,7 +39,7 @@ ENV RUBY_VER="2.6.7"
 # 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -
 # ENV PATH="${PATH}:/root/.rbenv/bin"
 # Installing rvm 
-RUN apt install -qy procps curl ca-certificates gnupg2 --no-install-recommends
+RUN apt install -y -qy procps curl ca-certificates gnupg2 --no-install-recommends
 
 RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s
@@ -54,7 +54,9 @@ RUN /bin/bash -l -c ". /etc/profile.d/rvm.sh && rvm install 2.6.7"
  	
 
 # Install package dependency managers
-RUN npm install -g yarn && \
+RUN	cd ~ && \
+	ruby -v && \
+	npm install -g yarn && \
 	gem install bundler && \
 	apt update && \
 	apt -y install git libicu-dev libidn11-dev \
