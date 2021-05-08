@@ -59,7 +59,6 @@ RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
 
 # Install package dependency managers
 RUN	cd ~ && \
-	ruby -v && \
 	npm install -g yarn && \
 	apt update && \
 	apt -y install git libicu-dev libidn11-dev \
