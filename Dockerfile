@@ -34,7 +34,7 @@ ENV LDFLAGS="-L/opt/jemalloc/lib/"
 RUN apt update && \
 	apt -y install build-essential apt-utils  && \
 	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
-	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
+	apt -y install libncurses5-dev libffi-dev libssl-dev && \
 	cd ~ && \
 	curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash - && \
 	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
