@@ -37,13 +37,15 @@ RUN apt update && \
 	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
 	cd ~ && \
 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash - && \
-	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
+	
+ENV PATH="${PATH}:$HOME/.rbenv/bin:/opt/node/bin"
+
+# Continue Ruby Installation
+Run echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
 	echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
 	source ~/.bashrc && \
 	rbenv install $RUBY_VER && \
 	ruby -v
-
-ENV PATH="${PATH}:$HOME/.rbenv/bin:/opt/node/bin"
 
 # Install package dependency managers
 RUN npm install -g yarn && \
