@@ -34,20 +34,17 @@ ENV LDFLAGS="-L/opt/jemalloc/lib/"
 RUN apt update && \
 	apt -y install build-essential \
 		bison libyaml-dev libgdbm-dev libreadline-dev \
-		libncurses5-dev libffi-dev zlib1g-dev libssl-dev && \
+		libncurses5-dev libffi-dev zlib1g-dev libssl-dev zlib1g-dev autoconf \
+	
 	cd ~ && \
-	wget https://cache.ruby-lang.org/pub/ruby/${RUBY_VER%.*}/ruby-$RUBY_VER.tar.gz && \
-	tar xf ruby-$RUBY_VER.tar.gz && \
-	cd ruby-$RUBY_VER && \
-	./configure --prefix=/opt/ruby \
-	  --with-jemalloc \
-	  --with-shared \
-	  --disable-install-doc && \
-	ln -s /opt/jemalloc/lib/* /usr/lib/ && \
-	make -j$(nproc) > /dev/null && \
-	make install
+	curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash - && \
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
+	echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
+	source ~/.bashrc && \
+	rbenv install $RUBY_VER && \
+	ruby -v
 
-ENV PATH="${PATH}:/opt/ruby/bin:/opt/node/bin"
+ENV PATH="${PATH}:$HOME/.rbenv/bin:/opt/node/bin"
 
 # Install package dependency managers
 RUN npm install -g yarn && \
