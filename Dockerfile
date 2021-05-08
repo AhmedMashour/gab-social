@@ -32,10 +32,9 @@ ENV RUBY_VER="2.6.1"
 ENV CPPFLAGS="-I/opt/jemalloc/include"
 ENV LDFLAGS="-L/opt/jemalloc/lib/"
 RUN apt update && \
-	apt -y install build-essential \
-		bison libyaml-dev libgdbm-dev libreadline-dev \
-		libncurses5-dev libffi-dev zlib1g-dev libssl-dev zlib1g-dev autoconf && \
-	
+	apt -y install build-essential && \
+	apt -y install bison libyaml-dev libgdbm-dev libreadline-dev && \
+	apt -y install libncurses5-dev libffi-dev zlib1g-dev libssl-dev zlib1g-dev autoconf && \
 	cd ~ && \
 	curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash - && \
 	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
