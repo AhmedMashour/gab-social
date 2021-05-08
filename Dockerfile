@@ -47,7 +47,7 @@ RUN usermod -a -G rvm root
 RUN echo '[[ -s /usr/local/rvm/scripts/rvm ]] && source /usr/local/rvm/scripts/rvm' >> ~/.bashrc
 RUN /bin/bash -l -c "rvm install 2.6.7"
 RUN /bin/bash -l -c "rvm --default use 2.6.7"
-RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+RUN /bin/bash -l -c "gem install bundler --no-rdoc"
 
 # # Continue Ruby Installation
 # Run	cd ~ && \
