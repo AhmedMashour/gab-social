@@ -117,7 +117,7 @@ USER gabsocial
 
 # Precompile assets
 RUN chmod -R 755 /opt/gabsocial
-RUN /bin/bash -l -c "cd ~ && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && yarn cache clean"
+RUN su - gabsocial -c "cd ~ && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && yarn cache clean"
 # Set the work dir and the container entry point
 WORKDIR /opt/gabsocial
 ENTRYPOINT ["/tini", "--"]
