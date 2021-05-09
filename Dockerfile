@@ -67,8 +67,8 @@ RUN	cd ~ && \
 COPY Gemfile* package.json yarn.lock /opt/gabsocial/
 
 # Install application dependencies
-RUN /bin/bash -l -c "gem update rails && gem install unf_ext -v '0.0.7.7'"
-RUN /bin/bash -l -c "cd /opt/gabsocial && rvm use 2.6.7 && ruby -v && bundle install -j$(nproc) --without development test"
+RUN /bin/bash -l -c "gem update rails && gem install unf_ext -v '0.0.7.7' --backtrace"
+RUN /bin/bash -l -c "cd /opt/gabsocial && rvm use 2.6.7 && ruby -v && bundle install --verbose -j$(nproc) --without development test"
 RUN yarn install --pure-lockfile
 
 FROM ubuntu:18.04
