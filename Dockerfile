@@ -102,7 +102,7 @@ RUN echo "$TINI_SUM tini" | sha256sum -c -
 RUN chmod +x /tini
 
 # Copy over masto source, and dependencies from building, and set permissions
-COPY --chown=gabsocial:gabsocial . /opt/gabsocial
+COPY . /opt/gabsocial
 # COPY --from=build-dep --chown=gabsocial:gabsocial /opt/gabsocial /opt/gabsocial
 
 # Run masto services in prod mode
