@@ -120,5 +120,5 @@ USER gabsocial
 
 # Set the work dir and the container entry point
 WORKDIR /opt/gabsocial
-RUN /bin/bash -l -c "export RAILS_SERVE_STATIC_FILES=true && export RAILS_ENV=production && export OTP_SECRET=precompile_placeholder && export SECRET_KEY_BASE=precompile_placeholder && ls && rails assets:precompile"
+RUN /bin/bash -l -c "export RAILS_SERVE_STATIC_FILES=true && export RAILS_ENV=production && export OTP_SECRET=precompile_placeholder && export SECRET_KEY_BASE=precompile_placeholder && ls && rails assets:precompile && yarn cache clean"
 ENTRYPOINT ["/tini", "--"]
