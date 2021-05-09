@@ -40,7 +40,7 @@ services:
     image: gab/social
     restart: always
     env_file: .env.production
-    command: /bin/bash -l -c "rm -f /gabsocial/tmp/pids/server.pid; bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: /bin/bash -l -c "rm -f /gabsocial/tmp/pids/server.pid && cd /opt/gabsocial && bundle exec rails s -p 3000 -b '0.0.0.0'"
     networks:
       - external_network
       - internal_network
@@ -60,7 +60,7 @@ services:
     image: gab/social
     restart: always
     env_file: .env.production
-    command: yarn add && yarn start
+    command: yarn start
     networks:
       - external_network
       - internal_network
