@@ -78,7 +78,7 @@ ENV PATH="${PATH}:/opt/ruby/bin:/opt/node/bin:/opt/gabsocial/bin"
 # Create the gabsocial user
 ARG UID=991
 ARG GID=991
-RUN ln -s /opt/jemalloc/lib/* /usr/lib/ && \
+RUN ln -s /opt/jemalloc/lib/* /usr/lib/ -f && \
 	apt install -y vim whois && \
 	addgroup --gid $GID gabsocial && \
 	useradd -m -u $UID -g $GID -d /opt/gabsocial gabsocial && \
