@@ -72,12 +72,6 @@ RUN /bin/bash -l -c "bundle config --local without 'development test'"
 RUN /bin/bash -l -c "cd /opt/gabsocial && rvm use 2.6.7 && ruby -v && bundle install -j$(nproc)"
 RUN yarn install --pure-lockfile
 
-FROM ubuntu:18.04
-
-# Copy over all the langs needed for runtime
-# COPY --from=build-dep /opt/node /opt/node
-# COPY --from=build-dep /opt/ruby /opt/ruby
-# COPY --from=build-dep /opt/jemalloc /opt/jemalloc
 
 # Add more PATHs to the PATH
 ENV PATH="${PATH}:/opt/ruby/bin:/opt/node/bin:/opt/gabsocial/bin"
@@ -99,10 +93,9 @@ RUN apt -y --no-install-recommends install \
 	  libssl1.1 libpq5 imagemagick ffmpeg \
 	  libicu60 libprotobuf10 libidn11 libyaml-0-2 \
 	  file ca-certificates tzdata libreadline7 && \
-	apt -y install gcc && \
-	ln -s /opt/gabsocial /gabsocial && \
-	gem install bundler && \
-	rm -rf /var/cache && \
+	ln -s /opt/gabsocial /gabsocial
+
+RUN	rm -rf /var/cache && \
 	rm -rf /var/lib/apt/lists/*
 
 # Add tini
