@@ -118,7 +118,7 @@ USER gabsocial
 
 # Precompile assets
 
-RUN /bin/bash -l -c "cd ~ && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile"
+RUN /bin/bash -l -c "cd /opt/gabsocial && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile"
 # Set the work dir and the container entry point
 WORKDIR /opt/gabsocial
 ENTRYPOINT ["/tini", "--"]
