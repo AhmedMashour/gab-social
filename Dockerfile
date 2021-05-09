@@ -72,7 +72,6 @@ RUN /bin/bash -l -c "bundle config --local without 'development test'"
 RUN /bin/bash -l -c "cd /opt/gabsocial && rvm use 2.6.7 && ruby -v && bundle install -j$(nproc)"
 RUN yarn install --pure-lockfile
 
-
 # Add more PATHs to the PATH
 ENV PATH="${PATH}:/opt/ruby/bin:/opt/node/bin:/opt/gabsocial/bin"
 
@@ -82,7 +81,6 @@ ARG GID=991
 RUN apt update && \
 	echo "Etc/UTC" > /etc/localtime && \
 	ln -s /opt/jemalloc/lib/* /usr/lib/ && \
-	apt -y dist-upgrade && \
 	apt install -y vim whois wget && \
 	addgroup --gid $GID gabsocial && \
 	useradd -m -u $UID -g $GID -d /opt/gabsocial gabsocial && \
