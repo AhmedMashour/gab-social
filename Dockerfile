@@ -78,10 +78,8 @@ ENV PATH="${PATH}:/opt/ruby/bin:/opt/node/bin:/opt/gabsocial/bin"
 # Create the gabsocial user
 ARG UID=991
 ARG GID=991
-RUN apt update && \
-	echo "Etc/UTC" > /etc/localtime && \
-	ln -s /opt/jemalloc/lib/* /usr/lib/ && \
-	apt install -y vim whois wget && \
+RUN ln -s /opt/jemalloc/lib/* /usr/lib/ && \
+	apt install -y vim whois && \
 	addgroup --gid $GID gabsocial && \
 	useradd -m -u $UID -g $GID -d /opt/gabsocial gabsocial && \
 	echo "gabsocial:`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 24 | mkpasswd -s -m sha-256`" | chpasswd
