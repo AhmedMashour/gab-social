@@ -116,7 +116,7 @@ ENV RAILS_SERVE_STATIC_FILES="true"
 USER gabsocial
 
 # Precompile assets
-RUN /bin/bash -l -c "cd ~ && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && yarn cache clean"
+RUN /bin/bash -l -c "cd ~ && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder sudo rails assets:precompile && yarn cache clean"
 # Set the work dir and the container entry point
 WORKDIR /opt/gabsocial
 ENTRYPOINT ["/tini", "--"]
