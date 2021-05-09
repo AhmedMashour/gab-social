@@ -75,9 +75,9 @@ RUN yarn install --pure-lockfile
 FROM ubuntu:18.04
 
 # Copy over all the langs needed for runtime
-COPY --from=build-dep /opt/node /opt/node
-COPY --from=build-dep /opt/ruby /opt/ruby
-COPY --from=build-dep /opt/jemalloc /opt/jemalloc
+# COPY --from=build-dep /opt/node /opt/node
+# COPY --from=build-dep /opt/ruby /opt/ruby
+# COPY --from=build-dep /opt/jemalloc /opt/jemalloc
 
 # Add more PATHs to the PATH
 ENV PATH="${PATH}:/opt/ruby/bin:/opt/node/bin:/opt/gabsocial/bin"
