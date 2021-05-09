@@ -112,10 +112,12 @@ ENV NODE_ENV="production"
 # Tell rails to serve static files
 ENV RAILS_SERVE_STATIC_FILES="true"
 
+RUN chmod -R 755 /opt/gabsocial
 # Set the run user
 USER gabsocial
 
 # Precompile assets
+
 RUN su - gabsocial -c "cd ~ && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder rails assets:precompile && yarn cache clean"
 # Set the work dir and the container entry point
 WORKDIR /opt/gabsocial
