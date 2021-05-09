@@ -102,7 +102,7 @@ RUN echo "$TINI_SUM tini" | sha256sum -c -
 RUN chmod +x /tini
 
 # Copy over masto source, and dependencies from building, and set permissions
-COPY --chown=gabsocial:gabsocial . /opt/gabsocial
+# COPY --chown=gabsocial:gabsocial . /opt/gabsocial
 # COPY --from=build-dep --chown=gabsocial:gabsocial /opt/gabsocial /opt/gabsocial
 
 # Run masto services in prod mode
@@ -112,7 +112,7 @@ ENV NODE_ENV="production"
 # Tell rails to serve static files
 ENV RAILS_SERVE_STATIC_FILES="true"
 
-RUN chmod -R 755 /opt/gabsocial
+RUN chmod -R 777 /opt/gabsocial
 # Set the run user
 USER gabsocial
 
