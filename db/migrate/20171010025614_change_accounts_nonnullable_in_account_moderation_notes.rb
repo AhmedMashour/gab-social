@@ -9,6 +9,9 @@ class ChangeAccountsNonnullableInAccountModerationNotes < ActiveRecord::Migratio
     safety_assured do
       execute 'ALTER TABLE "account_moderation_notes" ADD CONSTRAINT "account_moderation_notes_account_id_null" CHECK ("account_id" IS NOT NULL) NOT VALID'
     end
+    safety_assured do
+      execute 'ALTER TABLE "account_moderation_notes" ADD CONSTRAINT "account_moderation_notes_target_account_id_null" CHECK ("target_account_id" IS NOT NULL) NOT VALID'
+    end
   end
 end
 
@@ -17,9 +20,17 @@ class ValidateChangeAccountsNonnullableInAccountModerationNotes < ActiveRecord::
     safety_assured do
       execute 'ALTER TABLE "account_moderation_notes" VALIDATE CONSTRAINT "account_moderation_notes_account_id_null"'
     end
+    safety_assured do
+      execute 'ALTER TABLE "account_moderation_notes" VALIDATE CONSTRAINT "account_moderation_notes_target_account_id_null"'
+    end
     change_column_null :account_moderation_notes, :account_id, false
+    change_column_null :account_moderation_notes, :target_account_id, false
+    
     safety_assured do
       execute 'ALTER TABLE "account_moderation_notes" DROP CONSTRAINT "account_moderation_notes_account_id_null"'
+    end
+    safety_assured do
+      execute 'ALTER TABLE "account_moderation_notes" DROP CONSTRAINT "account_moderation_notes_target_account_id_null"'
     end
   end
 end
