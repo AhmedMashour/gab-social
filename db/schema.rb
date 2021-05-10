@@ -840,7 +840,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_141707) do
     t.bigint "access_token_id"
     t.bigint "user_id"
     t.index ["access_token_id"], name: "index_web_push_subscriptions_on_access_token_id"
-    t.index ["user_id"], name: "index_web_push_subscriptions_on_user_id"
+    # t.index ["user_id"], name: "index_web_push_subscriptions_on_user_id"
   end
 
   create_table "web_settings", force: :cascade do |t|
