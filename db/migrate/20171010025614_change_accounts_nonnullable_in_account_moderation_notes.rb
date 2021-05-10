@@ -5,14 +5,6 @@ class ChangeAccountsNonnullableInAccountModerationNotes < ActiveRecord::Migratio
   end
 end
 
-class ChangeAccountsNonnullableInAccountModerationNotes < ActiveRecord::Migration[5.2]
-  def change
-    safety_assured do
-      execute 'ALTER TABLE "account_moderation_notes" ADD CONSTRAINT "account_moderation_notes_account_id_null" CHECK ("account_id" IS NOT NULL) NOT VALID'
-    end
-  end
-end
-
 class ValidateChangeAccountsNonnullableInAccountModerationNotes < ActiveRecord::Migration[5.2]
   def change
     safety_assured do
